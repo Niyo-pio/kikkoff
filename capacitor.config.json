@@ -1,0 +1,11 @@
+{
+  "appId": "com.riversidefc.kickoffs",
+  "appName": "Kickoffs",
+  "webDir": "dist",
+  "ios": {
+    "contentInset": "automatic"
+  },
+  "android": {
+    "backgroundColor": "#f5f5f0"
+  }
+}
