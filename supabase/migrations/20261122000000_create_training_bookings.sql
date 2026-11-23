@@ -6,8 +6,8 @@ create table if not exists public.training_slots (
   training_date date not null,
   starts_at time not null,
   duration_minutes integer not null default 90 check (duration_minutes > 0),
-  capacity integer not null default 18 check (capacity > 0),
-  location text not null default 'Club Ground',
+  capacity integer not null default 20 check (capacity > 0),
+  location text not null default 'Amahoro Training Ground',
   created_at timestamptz not null default now(),
   unique (training_date, starts_at, session_name)
 );
@@ -149,13 +149,9 @@ with upcoming_dates as (
   )::date as training_date
 ),
 weekly_sessions as (
-  select training_date, time '19:00' as starts_at
+  select training_date, time '17:30' as starts_at
     from upcoming_dates
-    where extract(isodow from training_date) in (2, 4)
-  union all
-  select training_date, time '10:00' as starts_at
-    from upcoming_dates
-    where extract(isodow from training_date) = 6
+    where extract(isodow from training_date) in (1, 3)
 )
 insert into public.training_slots (
   session_name,
@@ -170,7 +166,7 @@ select
   training_date,
   starts_at,
   90,
-  18,
-  'Club Ground'
+  20,
+  'Amahoro Training Ground'
 from weekly_sessions
 on conflict (training_date, starts_at, session_name) do nothing;

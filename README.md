@@ -15,7 +15,7 @@ Without Supabase environment variables, the app shows its setup screen rather th
 
 1. In Supabase, enable Google under **Authentication → Providers**. Add the Google OAuth client details and configure the provider callback URL shown by Supabase.
 2. Add your local and production app URLs to **Authentication → URL Configuration → Redirect URLs**.
-3. Link the CLI to your Supabase project (`supabase link --project-ref your-project-ref`), then apply `supabase/migrations/20261122000000_create_training_bookings.sql` with `supabase db push` or the SQL editor. It creates row-level security policies, an atomic booking function, and sample Tuesday/Thursday/Saturday sessions for the next eight weeks. Change the sample location, days, capacity, and times to suit your club before applying it.
+3. Apply `supabase/migrations/20261122000000_create_training_bookings.sql` with `supabase db push` or the SQL editor. It creates row-level security policies, an atomic booking function, and Monday/Wednesday sessions at 17:30 for the next eight weeks (90 minutes, 20 places, Amahoro Training Ground). Update these generated schedule values if your club changes its timetable.
 4. Deploy the confirmation-email function:
 
    ```sh
@@ -23,7 +23,7 @@ Without Supabase environment variables, the app shows its setup screen rather th
    supabase secrets set RESEND_API_KEY=re_... EMAIL_FROM="Your Club <bookings@your-verified-domain.com>"
    ```
 
-   Supabase supplies `SUPABASE_URL` and `SUPABASE_ANON_KEY` to Edge Functions. Verify the sender domain with Resend before using real member addresses. The database booking is confirmed even if the email provider is unavailable; the app tells the member when an email could not be sent.
+   Supabase supplies `SUPABASE_URL` and `SUPABASE_ANON_KEY` to Edge Functions. For the dashboard editor, add `RESEND_API_KEY` and `EMAIL_FROM` under **Edge Functions → Secrets**. Verify the sender domain with Resend before using real member addresses. The function uses custom Supabase user-token verification, so **Verify JWT with legacy secret** should remain off. The database booking is confirmed even if the email provider is unavailable; the app tells the member when an email could not be sent.
 5. Add `.env.local` values:
 
    ```dotenv
