@@ -11,7 +11,6 @@ import {
   MapPin,
   Menu,
   ShieldCheck,
-  Sparkles,
   UsersRound,
   X,
 } from 'lucide-react'
@@ -350,7 +349,7 @@ function App() {
         </nav>
 
         <div className="sidebar-note">
-          <div className="note-icon"><Sparkles size={16} /></div>
+          <div className="note-icon"><UsersRound size={16} /></div>
           <strong>Good football starts here.</strong>
           <p>See you out on the pitch.</p>
           <span className="note-ball" aria-hidden="true">⚽</span>
@@ -447,9 +446,9 @@ function SignInScreen({ configured, error, onSignIn }: { configured: boolean; er
       <section className="signin-panel">
         <div className="signin-brand"><BrandMark /><span className="brand-word">kickoffs<span>.</span></span></div>
         <div className="signin-copy">
-          <span className="eyebrow"><span className="eyebrow-dot" /> CLUB MEMBERS</span>
-          <h1>Your next<br />good session<br /><em>starts here.</em></h1>
-          <p>Book your place, turn up ready, and get back to the best bit of football.</p>
+          <span className="eyebrow"><span className="eyebrow-dot" /> MEMBER SIGN IN</span>
+          <h1>Training soon?<br /><em>Come along.</em></h1>
+          <p>Pick a date that works and we’ll see you there.</p>
           {configured ? (
             <>
               <button type="button" className="google-button" onClick={onSignIn}>
@@ -468,12 +467,12 @@ function SignInScreen({ configured, error, onSignIn }: { configured: boolean; er
           )}
         </div>
         <div className="signin-bottom">
-          <span>Made for the people who show up.</span>
+          <span>Good to have you here.</span>
           <span>YOUR CLUB · YOUR GAME</span>
         </div>
       </section>
       <section className="signin-art" aria-label="Football pitch illustration">
-        <div className="art-topline"><span>WEEK IN, WEEK OUT</span><span>FOOTBALL&nbsp; · &nbsp;COMMUNITY</span></div>
+        <div className="art-topline"><span>AT THE CLUB</span><span>TRAINING · TOGETHER</span></div>
         <div className="pitch-frame">
           <div className="pitch-line pitch-midline" />
           <div className="pitch-circle" />
@@ -485,7 +484,7 @@ function SignInScreen({ configured, error, onSignIn }: { configured: boolean; er
           <span className="pitch-dot pitch-dot-two" />
           <span className="pitch-dot pitch-dot-three" />
         </div>
-        <div className="art-caption"><span>A PLACE ON THE PITCH<br /><strong>IS A PLACE WITH US.</strong></span><ArrowDownRight size={26} /></div>
+        <div className="art-caption"><span>SEE YOU<br /><strong>AT TRAINING.</strong></span><ArrowDownRight size={26} /></div>
         <div className="art-stamp">R<br /><span>F</span><br />C</div>
       </section>
     </main>
